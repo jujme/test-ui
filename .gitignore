@@ -1,41 +1,49 @@
-# Compiled Lua sources
-luac.out
+]]
+--[[
+local colors = {
 
-# luarocks build files
-*.src.rock
-*.zip
-*.tar.gz
+    SchemeColor = Color3.fromRGB(150, 72, 148),
 
-# Object files
-*.o
-*.os
-*.ko
-*.obj
-*.elf
+	Background = Color3.fromRGB(15,15,15),
+	
+    Header = Color3.fromRGB(15,15,15),
+    
+    TextColor = Color3.fromRGB(255,255,255),
 
-# Precompiled Headers
-*.gch
-*.pch
+    ElementColor = Color3.fromRGB(20, 20, 20)
+}
+]]
 
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-*.def
-*.exp
+local Window = Library.CreateLib("Name", "RJTheme3")
 
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
+local Tab = Window:NewTab("TabName")
 
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
+local Section = Tab:NewSection("Section Name")
 
+Section:NewButton("ButtonText", "ButtonInfo", function()
+    print("Clicked")
+end)
+
+Section:NewToggle("ToggleText", "ToggleInfo", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
+Section:NewSlider("SliderText", "SliderInfo", 500, 0, function(s) -- 500 (Макс. значение) | 0 (Мин. значение)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+
+Section:NewTextBox("TextboxText", "TextboxInfo", function(txt)
+	print(txt)
+end)
+
+Section:NewKeybind("KeybindText", "KeybindInfo", Enum.KeyCode.F, function()
+	print("You just clicked the bind")
+end)
+
+Section:NewDropdown("DropdownText", "DropdownInf", {"Option 1", "Option 2", "Option 3"}, function(currentOption)
+    print(currentOption)
+end)

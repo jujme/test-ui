@@ -1,3 +1,5 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/jujme/test-ui/main/.gitignore"))()
+
 ]]
 --[[
 local colors = {
